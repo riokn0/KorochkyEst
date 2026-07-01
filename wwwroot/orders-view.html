@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои заявки</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Корочки.есть</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="order-create.html">Создать заявку</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="orders-view.html">Мои заявки</a></li>
+                    <li class="nav-item"><a class="btn btn-outline-danger btn-sm ms-2" href="login.html">Выйти</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5 flex-grow-1">
+        <div class="row g-4">
+
+            <div class="col-lg-8">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-white py-3">
+                        <h4 class="m-0 fw-bold">История ваших заявок</h4>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th scope="col" class="ps-3">ID</th>
+                                        <th scope="col">Курс</th>
+                                        <th scope="col">Дата начала</th>
+                                        <th scope="col">Оплата</th>
+                                        <th scope="col" class="pe-3">Статус</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="ps-3"><strong>#1024</strong></td>
+                                        <td>Разработка веб-приложений (Frontend)</td>
+                                        <td>05.07.2026</td>
+                                        <td>Перевод</td>
+                                        <td class="pe-3"><span class="badge bg-warning text-dark">Новая</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ps-3"><strong>#1012</strong></td>
+                                        <td>Основы информационной безопасности</td>
+                                        <td>10.06.2026</td>
+                                        <td>Наличными</td>
+                                        <td class="pe-3"><span class="badge bg-primary">Идет обучение</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ps-3"><strong>#0985</strong></td>
+                                        <td>Графический дизайн и векторная графика</td>
+                                        <td>15.05.2026</td>
+                                        <td>Перевод</td>
+                                        <td class="pe-3"><span class="badge bg-success">Обучение завершено</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="m-0 fw-bold">Оставить отзыв</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted small">Поделитесь вашим мнением о качестве наших образовательных услуг.</p>
+
+                        <form id="feedbackForm" class="needs-validation" novalidate>
+                            <div class="mb-3">
+                                <label for="feedbackCourse" class="form-label small fw-semibold">Курс</label>
+                                <select class="form-select form-select-sm" id="feedbackCourse" required>
+                                    <option value="" selected disabled>Выберите курс...</option>
+                                    <option>Разработка веб-приложений (Frontend)</option>
+                                    <option>Графический дизайн и векторная графика</option>
+                                </select>
+                                <div class="invalid-feedback">Выберите курс.</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="feedbackText" class="form-label small fw-semibold">Ваш отзыв</label>
+                                <textarea class="form-control" id="feedbackText" rows="4" placeholder="Напишите, что вам понравилось или что стоит улучшить..." required></textarea>
+                                <div class="invalid-feedback">Пожалуйста, напишите текст отзыва.</div>
+                            </div>
+
+                            <button type="submit" class="btn btn-outline-primary btn-sm w-100">Отправить отзыв</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="py-3 mt-auto">
+        <div class="container text-center"><small>&copy; 2026 Портал «Корочки.есть» Исхакова Д.Р.</small></div>
+    </footer>
+
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            const form = event.target;
+
+            if (!form.checkValidity()) {
+                form.classList.add('was-validated');
+            } else {
+                alert('Спасибо! Ваш отзыв успешно отправлен и будет опубликован после модерации.');
+                form.reset();
+                form.classList.remove('was-validated');
+            }
+        });
+    </script>
+</body>
+</html>

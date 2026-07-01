@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель администратора</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand text-white" href="index.html">Админ панель</a>
+            <div class="navbar-nav ms-auto">
+                <span class="nav-link text-light me-3">Вы вошли как: <strong>Admin</strong></span>
+                <a class="btn btn-outline-light btn-sm" href="login.html">Выйти</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5 flex-grow-1">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="fw-bold m-0">Панель управления заявками</h2>
+            <span class="badge bg-secondary p-2">Всего заявок: 3</span>
+        </div>
+
+        <div class="card shadow-sm">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col" class="ps-3">ID</th>
+                                <th scope="col">Пользователь</th>
+                                <th scope="col">Курс обучения</th>
+                                <th scope="col">Дата начала</th>
+                                <th scope="col">Оплата</th>
+                                <th scope="col" class="pe-3">Статус заявки</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="ps-3"><strong>#1024</strong></td>
+                                <td>Иванов И.И.<br><small class="text-muted">8(999)123-45-67</small></td>
+                                <td>Разработка веб-приложений (Frontend)</td>
+                                <td>05.07.2026</td>
+                                <td><span class="badge bg-light text-dark border">Перевод</span></td>
+                                <td class="pe-3">
+                                    <select class="form-select form-select-sm status-select border-warning bg-warning bg-opacity-10" onchange="changeStatusStyle(this)">
+                                        <option value="new" selected>Новая</option>
+                                        <option value="process">Идет обучение</option>
+                                        <option value="completed">Обучение завершено</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="ps-3"><strong>#1025</strong></td>
+                                <td>Петров П.П.<br><small class="text-muted">8(900)765-43-21</small></td>
+                                <td>3D-моделирование в Blender</td>
+                                <td>12.07.2026</td>
+                                <td><span class="badge bg-light text-dark border">Наличными</span></td>
+                                <td class="pe-3">
+                                    <select class="form-select form-select-sm status-select border-warning bg-warning bg-opacity-10" onchange="changeStatusStyle(this)">
+                                        <option value="new" selected>Новая</option>
+                                        <option value="process">Идет обучение</option>
+                                        <option value="completed">Обучение завершено</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="ps-3"><strong>#1026</strong></td>
+                                <td>Смирнова А.В.<br><small class="text-muted">8(911)555-66-77</small></td>
+                                <td>Графический дизайн и векторная графика</td>
+                                <td>20.07.2026</td>
+                                <td><span class="badge bg-light text-dark border">Перевод</span></td>
+                                <td class="pe-3">
+                                    <select class="form-select form-select-sm status-select border-warning bg-warning bg-opacity-10" onchange="changeStatusStyle(this)">
+                                        <option value="new" selected>Новая</option>
+                                        <option value="process">Идет обучение</option>
+                                        <option value="completed">Обучение завершено</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-3 mt-auto">
+        <div class="container text-center"><small>&copy; 2026 Портал «Корочки.есть» Исхакова Д.Р.</small></div>
+    </footer>
+
+    <script>
+        function changeStatusStyle(selectElement) {
+            const value = selectElement.value;
+
+            // Сбрасываем все старые классы оформления Bootstrap
+            selectElement.classList.remove('border-warning', 'bg-warning', 'border-primary', 'bg-primary', 'border-success', 'bg-success', 'bg-opacity-10', 'text-white');
+
+            if (value === 'new') {
+                // Статус «Новая» — желтый/оранжевый цвет
+                selectElement.classList.add('border-warning', 'bg-warning', 'bg-opacity-10');
+            } else if (value === 'process') {
+                // Статус «Идет обучение» — синий цвет
+                selectElement.classList.add('border-primary', 'bg-primary', 'bg-opacity-10');
+            } else if (value === 'completed') {
+                // Статус «Обучение завершено» — зеленый цвет
+                selectElement.classList.add('border-success', 'bg-success', 'bg-opacity-10');
+            }
+        }
+    </script>
+</body>
+</html>
